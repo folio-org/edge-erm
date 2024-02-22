@@ -1,0 +1,18 @@
+{
+  "description": "License terms response",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "license term items found by provided ids",
+      "items": {
+        "type": "object",
+        "description": "license term item response",
+        "$ref": "license-terms-batch-item.json"
+      }
+    }
+  },
+  "required": [
+    "results"
+  ]
+}

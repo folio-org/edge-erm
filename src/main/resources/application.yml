@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: edge-erm
+  liquibase:
+    enabled: false
+  jackson:
+    default-property-inclusion: non_null
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true  
+    
+management.endpoints.web.base-path: /admin
+header.validation.x-okapi-tenant.exclude.base-paths: /admin,/swagger,/v2/api-docs
+
+folio:
+  system-user:
+    username: dummy # This isn't actually used, but we get dependency injection errors from folio-spring-system-user if we don't have it
+  environment: dev # Overridden at runtime in production, but causes folio-spring-system-user DI errors if it's not set
+  tenant:
+    validation:
+      enabled: false
+
+logging:
+  config: classpath:log4j2.xml
+
+server:
+  port: 8080
+  error:
+    include-message: always
+
+security:
+  store: ${secure_store:Ephemeral}
+  props-location: ${secure_store_props:src/main/resources/ephemeral.properties}
+
+token:
+  capacity: ${token_cache_capacity:100}
+  ttl-ms: ${token_cache_ttl_ms:3600000}
+  fail-ttl-ms: ${null_token_cache_ttl_ms:30000}
+
+thread-pool-executor:
+  config:
+    core-pool-size: ${core_pool_size:30}
+    max-pool-size: ${max_pool_size:1000}
+    queue-capacity: ${queue_capacity:100}
+    keep-alive-seconds: ${keep_alive_seconds:10}

@@ -1,0 +1,23 @@
+{
+  "description": "License term item response",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "id field"
+    },
+    "licenseTerms": {
+      "description": "Array of license term objects with found values",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "license term item object",
+        "$ref": "license-term-item.json"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "licenseTerms"
+  ]
+}

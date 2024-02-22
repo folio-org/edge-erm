@@ -1,0 +1,207 @@
+openapi: 3.0.0
+info:
+  title: Erm API
+  version: v1
+
+servers:
+  - url: /erm/
+
+paths:
+  /erm/license-terms/{id}:
+    get:
+      tags:
+        - licenseTerms
+      operationId: getLicenseTerms
+      summary: Retrieve license terms by package/title identifier
+      description: Retrieve license terms by package/title identifier
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/x-okapi-tenant-header'
+        - $ref: '#/components/parameters/x-okapi-token-header'
+      responses:
+        '200':
+          description: 'Calls the backend service associated with the type parameter and returns the response as-is'
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/license-terms/license-terms.json'
+        '400':
+          $ref: '#/components/responses/badRequestResponse'
+        '401':
+          $ref: '#/components/responses/notAuthorizedResponse'
+        '403':
+          $ref: '#/components/responses/accessDeniedResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+        '500':
+          $ref: '#/components/responses/internalServerErrorResponse'
+
+  /erm/license-terms/batch:
+    post:
+      tags:
+        - batchLicenseTerms
+      operationId: batchLicenseTerms
+      summary: Retrieve license terms by package/title identifier in batch
+      description: Retrieve license terms by package/title identifier in batch
+      parameters:
+        - $ref: '#/components/parameters/x-okapi-tenant-header'
+        - $ref: '#/components/parameters/x-okapi-token-header'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/license-terms/request-ids.json'
+      responses:
+        '200':
+          description: 'Calls the backend service associated with the type parameter and returns the response as-is'
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/license-terms/license-terms-batch.json'
+        '400':
+          $ref: '#/components/responses/badRequestResponse'
+        '401':
+          $ref: '#/components/responses/notAuthorizedResponse'
+        '403':
+          $ref: '#/components/responses/accessDeniedResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+        '500':
+          $ref: '#/components/responses/internalServerErrorResponse'
+
+components:
+  responses:
+    badRequestResponse:
+      description: Validation errors
+      content:
+        application/json:
+          example:
+            $ref: examples/error/badRequestErrorResponse.json
+          schema:
+            $ref: "#/components/schemas/errorResponse"
+    internalServerErrorResponse:
+      description: When unhandled exception occurred during code execution, e.g. NullPointerException
+      content:
+        application/json:
+          example:
+            $ref: examples/error/internalErrorResponse.json
+          schema:
+            $ref: "#/components/schemas/errorResponse"
+    notAuthorizedResponse:
+      description: Not authorized to perform requested action
+      content:
+        application/json:
+          example:
+            $ref: examples/error/unauthorizedErrorResponse.json
+          schema:
+            $ref: "#/components/schemas/errorResponse"
+    accessDeniedResponse:
+      description: Access Denied
+      content:
+        application/json:
+          example:
+            $ref: examples/error/accessDeniedErrorResponse.json
+          schema:
+            $ref: "#/components/schemas/errorResponse"
+    notFoundResponse:
+      description: Item with a given ID not found
+      content:
+        application/json:
+          example:
+            $ref: examples/error/notFoundErrorResponse.json
+          schema:
+            $ref: "#/components/schemas/errorResponse"
+    unprocessableEntityErrorResponse:
+      description: Item with a given ID not found
+      content:
+        application/json:
+          example:
+            $ref: examples/error/unprocessableEntityErrorResponse.json
+          schema:
+            $ref: "#/components/schemas/errorResponse"
+    notImplementedResponse:
+      description: The server does not support the functionality required to fulfill the request
+      content:
+        application/json:
+          example: "the method that is unavailable"
+          schema:
+            $ref: "#/components/schemas/errorResponse"
+
+  schemas:
+    requestQueryParameters:
+      $ref: 'schemas/requestParameters.json#/RequestQueryParameters'
+    errorResponse:
+      $ref: 'schemas/error.json#/Error'
+  parameters:
+    id:
+      name: id
+      in: path
+      description: The UUID of a FOLIO user
+      required: true
+      schema:
+        type: string
+    request-query-parameters:
+      name: requestQueryParameters
+      in: query
+      description: Request query parameters(query, limit, offset and etc.) as object.
+      schema:
+        $ref: '#/components/schemas/requestQueryParameters'
+    query-parameter:
+      name: query
+      in: query
+      description: The keyword query in CQL format
+      schema:
+        type: string
+    lang:
+      name: lang
+      in: query
+      description: Requested language
+      required: false
+      example: en
+      schema:
+        pattern: "[a-zA-Z]{2}"
+        default: en
+        type: string
+    type:
+      name: type
+      in: query
+      description: Indicates how to route the request
+      required: true
+      schema:
+        type: string
+    x-okapi-tenant-header:
+      name: x-okapi-tenant
+      in: header
+      description: x-okapi-tenant header value
+      required: false
+      schema:
+        type: string
+    x-okapi-url-header:
+      name: x-okapi-url
+      in: header
+      description: x-okapi-url header value
+      required: false
+      schema:
+        type: string
+    x-okapi-token-header:
+      name: x-okapi-token
+      in: header
+      description: x-okapi-token header value
+      required: false
+      schema:
+        type: string
+    authorization:
+      name: authorization
+      in: header
+      description: apikey for authorization
+      required: false
+      schema:
+        type: string
+    apiKey:
+      name: apiKey
+      in: query
+      description: apikey for authorization
+      required: false
+      schema:
+        type: string

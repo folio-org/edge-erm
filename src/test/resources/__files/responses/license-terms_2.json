@@ -1,0 +1,217 @@
+{
+  "header": {
+    "dataSchema": {
+      "name": "mod-agreements-license",
+      "version": 1.0
+    }
+  },
+  "records": [
+    {
+      "id": "59f7a9c4-af37-4938-8ab3-36f3488fff22",
+      "name": "Test Use ONLY",
+      "startDate": "2023-01-01",
+      "endDate": "2026-03-31",
+      "isPerpetual": null,
+      "agreementStatus": {
+        "value": "active",
+        "label": "Active"
+      },
+      "linkedLicenses": [
+        {
+          "status": {
+            "value": "controlling",
+            "label": "Controlling"
+          },
+          "remoteId_object": {
+            "name": "Test Restricted License",
+            "status": {
+              "value": "active",
+              "label": "Active"
+            },
+            "description": null,
+            "startDate": "2023-01-01",
+            "endDate": null,
+            "openEnded": true,
+            "customProperties": {
+              "AutomaticRenewalName": [
+                {
+                  "id": 200,
+                  "publicNote": "Public Note 1",
+                  "internal": false,
+                  "value": {
+                    "value": "yes",
+                    "label": "Yes"
+                  },
+                  "type": {
+                    "retired": false,
+                    "name": "AutomaticRenewalName",
+                    "primary": false,
+                    "label": "Automatic Renewal",
+                    "description": "Automatic Renewal Description",
+                    "weight": 0
+                  }
+                }
+              ],
+              "CancellationNotice": [
+                {
+                  "id": 201,
+                  "publicNote": "Public Note 2",
+                  "internal": false,
+                  "value": "90 Day Advance Notice",
+                  "type": {
+                    "retired": false,
+                    "name": "CancellationNotice",
+                    "primary": false,
+                    "label": "Cancellation Notice",
+                    "description": "Cancellation Notice",
+                    "weight": 0
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "05b02350-41bb-4ab1-a912-fd6af42aff93",
+      "name": "Test Restricted Use",
+      "startDate": "2023-03-29",
+      "endDate": null,
+      "isPerpetual": null,
+      "agreementStatus": {
+        "value": "active",
+        "label": "Active"
+      },
+      "linkedLicenses": [
+        {
+          "status": {
+            "value": "controlling",
+            "label": "Controlling"
+          },
+          "remoteId_object": {
+            "name": "Test Public License",
+            "status": {
+              "value": "active",
+              "label": "Active"
+            },
+            "description": null,
+            "startDate": "2023-01-01",
+            "endDate": null,
+            "openEnded": true,
+            "customProperties": {
+              "InterlibraryLoan": [
+                {
+                  "id": 206,
+                  "publicNote": "Public Note 11",
+                  "internal": false,
+                  "value": "Not Permitted",
+                  "type": {
+                    "retired": false,
+                    "name": "InterlibraryLoan",
+                    "primary": false,
+                    "label": "Interlibrary Loan",
+                    "description": "Interlibrary Loan",
+                    "weight": 0
+                  }
+                }
+              ],
+              "PerpetualAccess": [
+                {
+                  "id": 205,
+                  "publicNote": "Public Note 22",
+                  "internal": false,
+                  "value": {
+                    "value": "no",
+                    "label": "No"
+                  },
+                  "type": {
+                    "retired": false,
+                    "name": "PerpetualAccess",
+                    "primary": false,
+                    "label": "Perpetual Access",
+                    "description": "Perpetual Access",
+                    "weight": 0
+                  }
+                }
+              ],
+              "ExpirationDate": [
+                {
+                  "id": 207,
+                  "publicNote": "Public Note for Date Type Term",
+                  "internal": false,
+                  "value": "2023-04-09",
+                  "type": {
+                    "retired": false,
+                    "name": "ExpirationDate",
+                    "primary": true,
+                    "label": "Expiration Date",
+                    "description": "Expiration Date",
+                    "weight": 1
+                  }
+                }
+              ],
+              "TestPickList": [
+                {
+                  "id": 233,
+                  "publicNote": "pick list",
+                  "internal": false,
+                  "value": {
+                    "value": "second_value",
+                    "label": "Second value"
+                  },
+                  "type": {
+                    "retired": false,
+                    "name": "TestPickList",
+                    "primary": false,
+                    "label": "Test pick list test term type",
+                    "description": "Test pick list test term type",
+                    "weight": 0
+                  }
+                }
+              ],
+              "TestMultiList": [
+                {
+                  "id": 232,
+                  "publicNote": "multi list",
+                  "internal": false,
+                  "value": [
+                    {
+                      "id": "2c91808387a285730187d9cfc8f90304",
+                      "value": "first_value",
+                      "label": "First value",
+                      "owner": {
+                        "id": "2c91808387a285730187d9ce63df0303",
+                        "desc": "LocateTestValues",
+                        "internal": false
+                      }
+                    },
+                    {
+                      "id": "2c91808387a285730187d9d122e30305",
+                      "value": "second_value",
+                      "label": "Second value",
+                      "owner": {
+                        "id": "2c91808387a285730187d9ce63df0303",
+                        "desc": "LocateTestValues",
+                        "internal": false
+                      }
+                    }
+                  ],
+                  "type": {
+                    "retired": false,
+                    "name": "TestMultiList",
+                    "primary": false,
+                    "label": "Test multi list test term type",
+                    "description": "Test multi list test term type",
+                    "weight": 0
+                  }
+                }
+              ]
+
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+secure_store_props: src/test/resources/ephemeral.properties
+okapi_url: http://localhost:9130
+spring:
+  application:
+    name: edge-erm
+  liquibase:
+    enabled: false
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+folio:
+  tenant:
+    validation:
+      enabled: false
+
+thread-pool-executor:
+  config:
+    core-pool-size: ${core_pool_size:30}
+    max-pool-size: ${max_pool_size:1000}
+    queue-capacity: ${queue_capacity:100}
+    keep-alive-seconds: ${keep_alive_seconds:10}

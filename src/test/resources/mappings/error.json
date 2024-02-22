@@ -1,0 +1,30 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/erm/sas/publicLookup?referenceId=test_403"
+      },
+      "response": {
+        "status": 403,
+        "bodyFileName": "errors/forbidden.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/erm/sas/publicLookup?referenceId=test_401"
+      },
+      "response": {
+        "status": 401,
+        "bodyFileName": "errors/unauthorized.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

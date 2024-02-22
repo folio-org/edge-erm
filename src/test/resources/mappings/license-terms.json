@@ -1,0 +1,30 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/erm/sas/publicLookup?referenceId=123355-1000141789"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "responses/license-terms.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/erm/sas/publicLookup?referenceId=334455-1000141666"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "responses/license-terms_2.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

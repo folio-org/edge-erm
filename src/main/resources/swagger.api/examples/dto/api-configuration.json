@@ -1,0 +1,32 @@
+{
+  "routing": [
+    {
+      "type": "FOLIO",
+      "method": "GET",
+      "pathPattern": "/opac-inventory/instances/{instanceId}",
+      "proxyPath": "/proxied-opac-inventory/instances/{instanceId}",
+      "proxyHeaders": [
+        "accept",
+        "content-type"
+      ],
+      "proxyParameters": [
+        "withHoldingAndItemData",
+        "proxiedParam"
+      ]
+    },
+    {
+      "type": "FOLIO",
+      "method": "GET",
+      "pathPattern": "/opac-inventory/instances/{instanceId}/canonical",
+      "proxyPath": "/proxied-opac-inventory/instances/{instanceId}/canonical",
+      "proxyHeaders": [
+        "accept",
+        "content-type"
+      ],
+      "proxyParameters": [
+        "withHoldingAndItemData",
+        "proxiedParam"
+      ]
+    }
+  ]
+}

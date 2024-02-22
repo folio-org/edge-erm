@@ -1,0 +1,57 @@
+{
+  "description": "License term item record",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "visibility": {
+      "type": "string"
+    },
+    "primary": {
+      "type": "boolean"
+    },
+    "value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "weight": {
+      "type": "number"
+    },
+    "publicNote": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "label",
+    "description",
+    "visibility",
+    "primary",
+    "value",
+    "weight",
+    "publicNote"
+  ]
+}
