@@ -29,6 +29,13 @@ server:
   error:
     include-message: always
 
+management:
+  endpoints:
+    web:
+      base-path: /admin
+      exposure:
+        include: ${ACTUATOR_EXPOSURE:health,info,loggers}
+
 security:
   store: ${secure_store:Ephemeral}
   props-location: ${secure_store_props:src/main/resources/ephemeral.properties}
