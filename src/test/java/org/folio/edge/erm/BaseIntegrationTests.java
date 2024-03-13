@@ -15,6 +15,8 @@ import org.folio.edgecommonspring.client.EnrichUrlClient;
 import org.folio.spring.integration.XOkapiHeaders;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.actuate.observability.AutoConfigureObservability;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -22,6 +24,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.WireMockSpring;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -31,16 +34,22 @@ import org.springframework.test.web.servlet.ResultActions;
 @TestPropertySource("classpath:application-test.yml")
 @AutoConfigureMockMvc
 @AutoConfigureObservability
+//@ExtendWith(SpringExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS) // This allows for autowired instance variables.
 public abstract class BaseIntegrationTests {
-
   protected static final WireMockServer WIRE_MOCK = new WireMockServer(
       WireMockSpring.options()
           .dynamicPort()
           .extensions(new ResponseTemplateTransformer(false)));
   private static final String TEST_API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
 
+  @Autowired
+  EnrichUrlClient enrichUrlClient;
+  @Autowired
+  ErmService ermService;
+
   @BeforeAll
-  static void beforeAll(@Autowired EnrichUrlClient enrichUrlClient, @Autowired ErmService ermService) {
+  void beforeAll() {
     WIRE_MOCK.start();
     ReflectionTestUtils.setField(enrichUrlClient, "okapiUrl", WIRE_MOCK.baseUrl());
     ReflectionTestUtils.setField(ermService, "okapiUrl", WIRE_MOCK.baseUrl());

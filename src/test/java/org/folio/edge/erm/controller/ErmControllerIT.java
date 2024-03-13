@@ -11,8 +11,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.folio.edge.erm.BaseIntegrationTests;
 import org.folio.edge.erm.TestUtil;
+import org.folio.edge.erm.service.ErmService;
+import org.folio.edgecommonspring.client.EnrichUrlClient;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 class ErmControllerIT extends BaseIntegrationTests {
