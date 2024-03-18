@@ -30,11 +30,8 @@ import org.springframework.test.web.servlet.ResultActions;
 @Log4j2
 @SpringBootTest
 @TestPropertySource("classpath:application-test.yml")
-//@ContextConfiguration("classpath:application-test.yml")
 @AutoConfigureMockMvc
 @AutoConfigureObservability
-//@ExtendWith(SpringExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS) // This allows for autowired instance variables.
 public abstract class BaseIntegrationTests {
   protected static final WireMockServer WIRE_MOCK = new WireMockServer(
       WireMockSpring.options()
@@ -42,17 +39,9 @@ public abstract class BaseIntegrationTests {
           .extensions(new ResponseTemplateTransformer(false)));
   private static final String TEST_API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
 
-  //@Autowired
-//  EnrichUrlClient enrichUrlClient;
-//
-//  @Autowired
-//  ErmService ermService;
-
   @BeforeAll
-  static void beforeAll(@Autowired ErmService ermService) {
-  //void beforeAll() {
+  static void beforeAll(@Autowired ErmService ermService, @Autowired EnrichUrlClient enrichUrlClient) {
     WIRE_MOCK.start();
-    EnrichUrlClient enrichUrlClient = new EnrichUrlClient();
     ReflectionTestUtils.setField(enrichUrlClient, "okapiUrl", WIRE_MOCK.baseUrl());
     ReflectionTestUtils.setField(ermService, "okapiUrl", WIRE_MOCK.baseUrl());
   }
