@@ -5,18 +5,13 @@ import static org.folio.edge.erm.TestConstants.LICENSE_TERMS_BATCH_REQUEST_PATH;
 import static org.folio.edge.erm.TestConstants.LICENSE_TERMS_BATCH_URL;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.folio.edge.erm.BaseIntegrationTests;
 import org.folio.edge.erm.TestUtil;
-import org.folio.edge.erm.service.ErmService;
-import org.folio.edgecommonspring.client.EnrichUrlClient;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 class ErmControllerIT extends BaseIntegrationTests {

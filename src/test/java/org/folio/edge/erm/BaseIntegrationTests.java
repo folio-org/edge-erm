@@ -15,7 +15,6 @@ import org.folio.edgecommonspring.client.EnrichUrlClient;
 import org.folio.spring.integration.XOkapiHeaders;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.actuate.observability.AutoConfigureObservability;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -40,7 +39,7 @@ public abstract class BaseIntegrationTests {
   private static final String TEST_API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
 
   @BeforeAll
-  static void beforeAll(@Autowired ErmService ermService, @Autowired EnrichUrlClient enrichUrlClient) {
+  static void beforeAll(@Autowired EnrichUrlClient enrichUrlClient, @Autowired ErmService ermService) {
     WIRE_MOCK.start();
     ReflectionTestUtils.setField(enrichUrlClient, "okapiUrl", WIRE_MOCK.baseUrl());
     ReflectionTestUtils.setField(ermService, "okapiUrl", WIRE_MOCK.baseUrl());
