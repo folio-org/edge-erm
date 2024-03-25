@@ -32,7 +32,6 @@ import org.springframework.test.web.servlet.ResultActions;
 @AutoConfigureMockMvc
 @AutoConfigureObservability
 public abstract class BaseIntegrationTests {
-
   protected static final WireMockServer WIRE_MOCK = new WireMockServer(
       WireMockSpring.options()
           .dynamicPort()

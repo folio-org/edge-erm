@@ -6,9 +6,10 @@ This software is distributed under the terms of the Apache License, Version 2.0.
 # Introduction
 Provides an ability to retrieve license term information
 
-
 # Security
 See [edge-common-spring](https://github.com/folio-org/edge-common-spring)
+
+# Installation/Deployment
 
 ## Configuration
 

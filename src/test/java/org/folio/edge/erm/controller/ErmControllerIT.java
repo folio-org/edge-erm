@@ -5,7 +5,6 @@ import static org.folio.edge.erm.TestConstants.LICENSE_TERMS_BATCH_REQUEST_PATH;
 import static org.folio.edge.erm.TestConstants.LICENSE_TERMS_BATCH_URL;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

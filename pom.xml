@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.1.6</version>
+    <version>3.2.4</version>
     <relativePath />
   </parent>
 
@@ -18,25 +26,21 @@
 
   <properties>
     <java.version>17</java.version>
-    <edge-common-spring-version>2.3.1</edge-common-spring-version>
-    <folio-spring-cql-version>7.1.2</folio-spring-cql-version>
-    <openapi-generator.version>6.5.0</openapi-generator.version>
-    <spring-cloud-wiremock>4.0.2</spring-cloud-wiremock>
+    <edge-common-spring-version>2.4.1</edge-common-spring-version>
+    <folio-spring-cql-version>8.1.0</folio-spring-cql-version>
+    <openapi-generator.version>7.4.0</openapi-generator.version>
+    <spring-cloud-wiremock>4.1.1</spring-cloud-wiremock>
     <edge-erm.yaml.file>${project.basedir}/src/main/resources/swagger.api/edge-erm.yaml
     </edge-erm.yaml.file>
     <sonar.exclusions>
       src/main/java/org/folio/edge/erm/EdgeErmApplication.java,
       src/main/java/org/folio/edge/erm/config/**
     </sonar.exclusions>
-    <swagger-parser.version>2.1.14</swagger-parser.version>
+    <swagger-parser.version>2.1.20</swagger-parser.version>
 
     <httpcomponents.httpclient.version>4.5.14</httpcomponents.httpclient.version>
     <httpcomponents.httpcore.version>4.4.16</httpcomponents.httpcore.version>
-    <snakeyaml.version>2.0</snakeyaml.version>
-    <jknack.handlebars.version>4.3.1</jknack.handlebars.version>
-    <tomcat.version>10.1.16</tomcat.version>
-    <bouncycastle.jdk18on.version>1.74</bouncycastle.jdk18on.version>
-    <jackson.version>2.16.0</jackson.version>
+    <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
   </properties>
 
   <dependencies>
@@ -58,6 +62,10 @@
           <artifactId>logback-classic</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -128,26 +136,6 @@
       <groupId>com.github.jknack</groupId>
       <artifactId>handlebars</artifactId>
       <version>${jknack.handlebars.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-core</artifactId>
-      <version>${tomcat.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-annotations-api</artifactId>
-      <version>${tomcat.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk18on</artifactId>
-      <version>${bouncycastle.jdk18on.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>${jackson.version}</version>
     </dependency>
   </dependencies>
 
