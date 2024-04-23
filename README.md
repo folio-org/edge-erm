@@ -4,7 +4,14 @@ Copyright (C) 2024 The Open Library Foundation
 This software is distributed under the terms of the Apache License, Version 2.0. See the file "LICENSE" for more information.
 
 # Introduction
-Provides an ability to retrieve license term information
+Provides an ability to retrieve license term information from FOLIO to external systems. The data flow is
+`edge-erm <-> FOLIO <-> mod-agreements`.
+
+## API Details
+| Method | URL                                        | Description |
+|--------|--------------------------------------------|---|
+| GET    | /erm/license-terms/{id} | Retrieve license terms by package/title identifier |
+| POST   | /erm/license-terms/batch | Retrieve license terms by package/title identifier in batch |
 
 # Security
 See [edge-common-spring](https://github.com/folio-org/edge-common-spring)
@@ -15,9 +22,13 @@ See [edge-common-spring](https://github.com/folio-org/edge-common-spring)
 
 * See [edge-common](https://github.com/folio-org/edge-common) for a description of how configuration works.
 
+## Required permissions for system user
+`licenses.licenses.item.get`
+
 ***System properties***
-Property                   | Default     | Description
-------------------------   | ----------- | -------------
+Property | Default     | Description
+------------------------- | ----------- | -------------
+`port`                    | `8081`      | Server port to listen on
 `secure_store`            | `Ephemeral` | Type of secure store to use.  Valid: `Ephemeral`, `AwsSsm`, `Vault`
 `secure_store_props`      | `src/main/resources/ephemeral.properties`        | Path to a properties file specifying secure store configuration
 `token_cache_ttl_ms`      | `3600000`   | How long to cache token, in milliseconds (ms)
@@ -36,3 +47,7 @@ Only intended for _development purposes_.  Credentials are defined in plain text
 ## Set up opac-yml-utils submodule
 
 To install opac-yml-utils submodule run git command: 'git submodule update --init' or 'git submodule update --remote'  
+
+### Issue tracker
+See project [EDGERM](https://issues.folio.org/browse/EDGERM)
+at the [FOLIO issue tracker](https://dev.folio.org/guidelines/issue-tracker).
