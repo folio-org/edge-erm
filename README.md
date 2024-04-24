@@ -22,10 +22,8 @@ See [edge-common-spring](https://github.com/folio-org/edge-common-spring)
 
 * See [edge-common](https://github.com/folio-org/edge-common) for a description of how configuration works.
 
-## Required permissions for system user
-`licenses.licenses.item.get`
+### System properties
 
-***System properties***
 Property | Default     | Description
 ------------------------- | ----------- | -------------
 `port`                    | `8081`      | Server port to listen on
@@ -40,7 +38,7 @@ Property | Default     | Description
 
 Three secure stores currently implemented for safe retrieval of encrypted credentials:
 
-#### EphemeralStore ####
+### EphemeralStore ###
 
 Only intended for _development purposes_.  Credentials are defined in plain text in a specified properties file.  See `src/main/resources/ephemeral.properties`
 
@@ -58,10 +56,13 @@ tenants=mytenant
 mytenant=edgeuser,password
 ```
 
-## Set up opac-yml-utils submodule
+### Required permissions for system user
+`licenses.licenses.item.get`
+
+### Set up opac-yml-utils submodule
 
 To install opac-yml-utils submodule run git command: 'git submodule update --init' or 'git submodule update --remote'  
 
-### Issue tracker
+# Issue tracker
 See project [EDGERM](https://issues.folio.org/browse/EDGERM)
 at the [FOLIO issue tracker](https://dev.folio.org/guidelines/issue-tracker).
