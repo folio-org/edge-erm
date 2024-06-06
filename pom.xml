@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.2.4</version>
+    <version>3.2.6</version>
     <relativePath />
   </parent>
 
@@ -26,7 +26,7 @@
 
   <properties>
     <java.version>17</java.version>
-    <edge-common-spring-version>2.4.1</edge-common-spring-version>
+    <edge-common-spring-version>2.4.4</edge-common-spring-version>
     <folio-spring-cql-version>8.1.0</folio-spring-cql-version>
     <openapi-generator.version>7.4.0</openapi-generator.version>
     <spring-cloud-wiremock>4.1.1</spring-cloud-wiremock>
