@@ -21,6 +21,10 @@ folio:
   tenant:
     validation:
       enabled: false
+  client:
+    okapiUrl: http://localhost:9130
+    tls:
+      enabled: false
 
 logging:
   config: classpath:log4j2.xml

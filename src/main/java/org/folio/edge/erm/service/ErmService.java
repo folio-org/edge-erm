@@ -1,6 +1,9 @@
 package org.folio.edge.erm.service;
 
+import static org.apache.maven.shared.utils.StringUtils.isBlank;
+
 import org.folio.edge.erm.client.ErmClient;
+import org.folio.edgecommonspring.client.EdgeFeignClientProperties;
 import org.folio.erm.domain.dto.LicenseTerms;
 import org.folio.erm.domain.dto.LicenseTermsBatch;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -40,8 +43,13 @@ public class ErmService {
   private static final String FAILED_TO_MAP_RESPONSE = "Failed to map licenses response";
   private final ErmClient ermClient;
   private final ObjectMapper objectMapper;
+  private final EdgeFeignClientProperties properties;
 
-  @Value("${okapi_url}")
+  /**
+   * @deprecated
+   */
+  @Deprecated(since = "1.2.0", forRemoval = false)
+  @Value("${okapi_url:NO_VALUE}")
   private String okapiUrl;
 
   @SneakyThrows
@@ -77,7 +85,12 @@ public class ErmService {
   }
 
   private ObjectNode getLicenceTermByIdResponseNode(String id, String tenant, String token) {
-    var response = ermClient.getLicenseTerms(URI.create(okapiUrl), id, tenant, token);
+    var okapiUrlToUse = properties.getOkapiUrl();
+    if (isBlank(okapiUrlToUse)) {
+      log.warn("deprecated property okapi_url is used. Please use folio.client.okapiUrl instead.");
+      okapiUrlToUse = okapiUrl;
+    }
+    var response = ermClient.getLicenseTerms(URI.create(okapiUrlToUse), id, tenant, token);
     try {
       var processedLicenses = processClientResponse(response);
 

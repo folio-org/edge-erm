@@ -19,6 +19,7 @@ import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
+import org.folio.edgecommonspring.client.EdgeFeignClientProperties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +44,12 @@ class ErmServiceTest {
   private ErmService ermService;
   @MockBean
   private ErmClient ermClient;
+  @MockBean
+  private EdgeFeignClientProperties edgeFeignClientProperties;
 
   @BeforeEach
   void before() {
-    ReflectionTestUtils.setField(ermService, "okapiUrl", OKAPI_URL);
+    when(edgeFeignClientProperties.getOkapiUrl()).thenReturn(OKAPI_URL);
   }
 
   @Test
@@ -69,6 +72,30 @@ class ErmServiceTest {
     assertEquals("AutomaticRenewalName", licenseTerms.get(5).getName());
     assertEquals("TestMultiList", licenseTerms.get(6).getName());
   }
+
+  @Test
+  void getLicenseTerms_shouldReturnLicenseTerms_whenOkapiUrlIsDefault() {
+    var expectedErmContent = TestUtil.readFileContentFromResources(LICENSE_TERMS_RESPONSE_PATH);
+    var referenceId = TEST_ID;
+    when(ermClient.getLicenseTerms(URI.create(OKAPI_URL), referenceId, TEST_TENANT,
+        StringUtils.EMPTY)).thenReturn(
+        expectedErmContent);
+    when(edgeFeignClientProperties.getOkapiUrl()).thenReturn(null);
+    ReflectionTestUtils.setField(ermService, "okapiUrl", OKAPI_URL);
+
+    var response = ermService.getLicenseTerms(referenceId, TEST_TENANT, StringUtils.EMPTY);
+
+    var licenseTerms = response.getLicenseTerms();
+    assertEquals(7, licenseTerms.size());
+    assertEquals("CancellationNotice", licenseTerms.get(0).getName());
+    assertEquals("PerpetualAccess", licenseTerms.get(1).getName());
+    assertEquals("ExpirationDate", licenseTerms.get(2).getName());
+    assertEquals("TestPickList", licenseTerms.get(3).getName());
+    assertEquals("InterlibraryLoan", licenseTerms.get(4).getName());
+    assertEquals("AutomaticRenewalName", licenseTerms.get(5).getName());
+    assertEquals("TestMultiList", licenseTerms.get(6).getName());
+  }
+
 
   @Test
   void batchLicenseTerms_shouldReturnLicenseTerms() {

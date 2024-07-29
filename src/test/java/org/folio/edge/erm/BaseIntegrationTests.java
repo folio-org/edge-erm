@@ -11,6 +11,7 @@ import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemp
 import java.util.List;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
+import org.folio.edgecommonspring.client.EdgeFeignClientProperties;
 import org.folio.edgecommonspring.client.EnrichUrlClient;
 import org.folio.spring.integration.XOkapiHeaders;
 import org.junit.jupiter.api.AfterAll;
@@ -39,10 +40,13 @@ public abstract class BaseIntegrationTests {
   private static final String TEST_API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
 
   @BeforeAll
-  static void beforeAll(@Autowired EnrichUrlClient enrichUrlClient, @Autowired ErmService ermService) {
+  static void beforeAll(@Autowired EnrichUrlClient enrichUrlClient, @Autowired ErmService ermService,
+      @Autowired EdgeFeignClientProperties properties) {
     WIRE_MOCK.start();
-    ReflectionTestUtils.setField(enrichUrlClient, "okapiUrl", WIRE_MOCK.baseUrl());
-    ReflectionTestUtils.setField(ermService, "okapiUrl", WIRE_MOCK.baseUrl());
+    var url = WIRE_MOCK.baseUrl();
+    ReflectionTestUtils.setField(enrichUrlClient, "okapiUrl", url);
+    ReflectionTestUtils.setField(ermService, "okapiUrl", url);
+    ReflectionTestUtils.setField(properties, "okapiUrl", url);
   }
 
   @AfterAll
