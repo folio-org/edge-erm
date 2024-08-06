@@ -1,3 +1,9 @@
+## 1.2.0
+- [FOLIO-3678](https://folio-org.atlassian.net/browse/FOLIO-3731): Use API-related Workflows FOLIO-3678
+- TCR-38: Prepare module for TCR process
+- [EDGERM-3](https://folio-org.atlassian.net/browse/EDGERM-3): edge-common-spring 2.4.4, Spring Boot 3.2.6 fixing vulnerabilities
+- [EDGERM-4](https://folio-org.atlassian.net/browse/EDGERM-4): Upgrade edge-common-spring version and add TLS support
+
 ## 1.0.0
 - [US1168386](https://rally1.rallydev.com/#/?detail=/userstory/726528716497&fdp=true): Upgrade edge common spring library for edge modules (RTR Support)
 - [US1117593](https://rally1.rallydev.com/#/?detail=/userstory/702018073915&fdp=true): * [edge-erm][edge-opac-erm] Fix mapping to enable support for decimal and integer formats in the "value" attribute of license terms
