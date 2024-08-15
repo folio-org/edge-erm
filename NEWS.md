@@ -1,3 +1,6 @@
+## 1.2.1
+- Fixed required interface version
+
 ## 1.2.0
 - [FOLIO-3678](https://folio-org.atlassian.net/browse/FOLIO-3731): Use API-related Workflows FOLIO-3678
 - TCR-38: Prepare module for TCR process
