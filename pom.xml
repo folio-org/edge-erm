@@ -26,7 +26,7 @@
 
   <properties>
     <java.version>17</java.version>
-    <edge-common-spring-version>2.4.5</edge-common-spring-version>
+    <edge-common-spring-version>2.4.6</edge-common-spring-version>
     <folio-spring-cql-version>8.1.0</folio-spring-cql-version>
     <openapi-generator.version>7.4.0</openapi-generator.version>
     <spring-cloud-wiremock>4.1.1</spring-cloud-wiremock>
@@ -42,6 +42,7 @@
     <httpcomponents.httpcore.version>4.4.16</httpcomponents.httpcore.version>
     <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
     <tomcat.version>10.1.25</tomcat.version>
+    <commons-lang3.version>3.17.0</commons-lang3.version>
   </properties>
 
   <dependencies>
