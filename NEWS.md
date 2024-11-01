@@ -1,3 +1,6 @@
+## 1.3.0
+- Add 7.1 erm interface version to required versions, update edge-common-spring to 2.4.6
+
 ## 1.2.1
 - Fixed required interface version
 
