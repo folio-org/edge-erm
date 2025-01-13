@@ -1,6 +1,6 @@
 package org.folio.edge.erm.config;
 
-import static org.folio.common.utils.FeignClientTlsUtils.getSslOkHttpClient;
+import static org.folio.common.utils.tls.FeignClientTlsUtils.getSslOkHttpClient;
 
 import feign.okhttp.OkHttpClient;
 import java.time.Duration;
