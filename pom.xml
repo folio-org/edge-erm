@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.2.6</version>
+    <version>3.4.3</version>
     <relativePath />
   </parent>
 
@@ -25,11 +25,11 @@
   <packaging>jar</packaging>
 
   <properties>
-    <java.version>17</java.version>
-    <edge-common-spring-version>2.4.6</edge-common-spring-version>
-    <folio-spring-cql-version>8.1.0</folio-spring-cql-version>
-    <openapi-generator.version>7.4.0</openapi-generator.version>
-    <spring-cloud-wiremock>4.1.1</spring-cloud-wiremock>
+    <java.version>21</java.version>
+    <edge-common-spring-version>3.0.0-SNAPSHOT</edge-common-spring-version>
+    <folio-spring-cql-version>9.0.0</folio-spring-cql-version>
+    <openapi-generator.version>7.12.0</openapi-generator.version>
+    <spring-cloud-wiremock>4.2.0</spring-cloud-wiremock>
     <edge-erm.yaml.file>${project.basedir}/src/main/resources/swagger.api/edge-erm.yaml
     </edge-erm.yaml.file>
     <sonar.exclusions>
@@ -37,10 +37,7 @@
       src/main/java/org/folio/edge/erm/config/**
     </sonar.exclusions>
     <swagger-parser.version>2.1.20</swagger-parser.version>
-
     <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
-    <tomcat.version>10.1.25</tomcat.version>
-    <commons-lang3.version>3.17.0</commons-lang3.version>
   </properties>
 
   <dependencies>
@@ -146,7 +143,7 @@
 
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.3.1</version>
         <executions>
           <execution>
             <id>filter-descriptor-inputs</id>
@@ -235,7 +232,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>3.5.2</version>
         <configuration>
           <includes>
             <include>**/*IT.java</include>
@@ -248,7 +245,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.1.1</version>
         <configuration>
           <preparationGoals>clean verify</preparationGoals>
           <tagNameFormat>v@{project.version}</tagNameFormat>
@@ -260,7 +257,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <id>git submodule init</id>
