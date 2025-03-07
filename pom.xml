@@ -38,8 +38,6 @@
     </sonar.exclusions>
     <swagger-parser.version>2.1.20</swagger-parser.version>
 
-    <httpcomponents.httpclient.version>4.5.14</httpcomponents.httpclient.version>
-    <httpcomponents.httpcore.version>4.4.16</httpcomponents.httpcore.version>
     <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
     <tomcat.version>10.1.25</tomcat.version>
     <commons-lang3.version>3.17.0</commons-lang3.version>
@@ -124,16 +122,6 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>${httpcomponents.httpclient.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore</artifactId>
-      <version>${httpcomponents.httpcore.version}</version>
-    </dependency>
     <dependency>
       <groupId>com.github.jknack</groupId>
       <artifactId>handlebars</artifactId>
