@@ -37,9 +37,7 @@
       src/main/java/org/folio/edge/erm/config/**
     </sonar.exclusions>
     <swagger-parser.version>2.1.20</swagger-parser.version>
-
     <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
-    <tomcat.version>11.0.4</tomcat.version>
   </properties>
 
   <dependencies>
