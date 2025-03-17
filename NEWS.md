@@ -1,3 +1,8 @@
+## 1.4.0
+
+- [EDGERM-10](https://folio-org.atlassian.net/browse/EDGERM-10): Upgrading to java 21
+- [EDGERM-11](https://folio-org.atlassian.net/browse/EDGERM-11): Remove httpcomponents, httpcore, httpclient
+
 ## 1.3.0
 - Add 7.1 erm interface version to required versions, update edge-common-spring to 2.4.6
 
