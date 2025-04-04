@@ -137,7 +137,7 @@ components:
     id:
       name: id
       in: path
-      description: The UUID of a FOLIO user
+      description:  EBSCO KB ids. ProviderId-PackageId-KBId OR ProviderId-PackageId
       required: true
       schema:
         type: string
