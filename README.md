@@ -27,6 +27,7 @@ See [edge-common-spring](https://github.com/folio-org/edge-common-spring)
 Property | Default     | Description
 ------------------------- | ----------- | -------------
 `port`                    | `8081`      | Server port to listen on
+`folio.client.okapiUrl`   | `http://localhost:9130` | Specifies the base URL for the Okapi service. Alternatively use `FOLIO_CLIENT_OKAPIURL` environment variable.
 `secure_store`            | `Ephemeral` | Type of secure store to use.  Valid: `Ephemeral`, `AwsSsm`, `Vault`
 `secure_store_props`      | `src/main/resources/ephemeral.properties`        | Path to a properties file specifying secure store configuration
 `token_cache_ttl_ms`      | `3600000`   | How long to cache token, in milliseconds (ms)
