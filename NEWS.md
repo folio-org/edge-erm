@@ -1,3 +1,7 @@
+## 1.4.1 2026-02-17
+
+- [EDGERM-17](https://folio-org.atlassian.net/browse/EDGERM-17): Sunflower: Release 1.4.1 with Spring Boot 3.4.13 fixing vulns
+
 ## 1.4.0
 
 - [EDGERM-10](https://folio-org.atlassian.net/browse/EDGERM-10): Upgrading to java 21
