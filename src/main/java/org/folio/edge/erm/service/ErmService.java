@@ -1,17 +1,8 @@
 package org.folio.edge.erm.service;
 
-import static org.apache.maven.shared.utils.StringUtils.isBlank;
-
 import org.folio.edge.erm.client.ErmClient;
-import org.folio.edgecommonspring.client.EdgeFeignClientProperties;
 import org.folio.erm.domain.dto.LicenseTerms;
 import org.folio.erm.domain.dto.LicenseTermsBatch;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,10 +11,13 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.node.ArrayNode;
+import tools.jackson.databind.node.ObjectNode;
 
 @Service
 @RequiredArgsConstructor
@@ -40,17 +34,8 @@ public class ErmService {
   private static final String PUBLIC_NOTE = "publicNote";
   private static final String WEIGHT = "weight";
   private static final String IDS_ARE_NOT_PROVIDED = "Ids to retrieve are not provided";
-  private static final String FAILED_TO_MAP_RESPONSE = "Failed to map licenses response";
   private final ErmClient ermClient;
   private final ObjectMapper objectMapper;
-  private final EdgeFeignClientProperties properties;
-
-  /**
-   * @deprecated
-   */
-  @Deprecated(since = "1.2.0", forRemoval = false)
-  @Value("${okapi_url:NO_VALUE}")
-  private String okapiUrl;
 
   @SneakyThrows
   public LicenseTermsBatch batchLicenseTerms(List<String> ids, String tenant, String token) {
@@ -85,26 +70,14 @@ public class ErmService {
   }
 
   private ObjectNode getLicenceTermByIdResponseNode(String id, String tenant, String token) {
-    var okapiUrlToUse = properties.getOkapiUrl();
-    if (isBlank(okapiUrlToUse)) {
-      log.warn("deprecated property okapi_url is used. Please use folio.client.okapiUrl instead.");
-      okapiUrlToUse = okapiUrl;
-    }
-    var response = ermClient.getLicenseTerms(URI.create(okapiUrlToUse), id, tenant, token);
-    try {
-      var processedLicenses = processClientResponse(response);
-
-      var responseNode = objectMapper.createObjectNode();
-      responseNode.set("licenseTerms", objectMapper.valueToTree(processedLicenses));
-      return responseNode;
-    } catch (Exception e) {
-      log.error(FAILED_TO_MAP_RESPONSE, e);
-      throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, FAILED_TO_MAP_RESPONSE);
-    }
+    var response = ermClient.getLicenseTerms(id, tenant, token);
+    var processedLicenses = processClientResponse(response);
+    var responseNode = objectMapper.createObjectNode();
+    responseNode.set("licenseTerms", objectMapper.valueToTree(processedLicenses));
+    return responseNode;
   }
 
-  private List<ObjectNode> processClientResponse(String response) throws JsonProcessingException {
-    var clientResponseNode = (ObjectNode) objectMapper.readTree(response);
+  private List<ObjectNode> processClientResponse(JsonNode clientResponseNode) {
     var records = (ArrayNode) clientResponseNode.get("records");
     var uniqueLicenses = getUniqueLicenses(records);
     return getProcessLicenses(uniqueLicenses);

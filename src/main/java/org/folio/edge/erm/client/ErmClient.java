@@ -3,20 +3,17 @@ package org.folio.edge.erm.client;
 import static org.folio.spring.integration.XOkapiHeaders.TENANT;
 import static org.folio.spring.integration.XOkapiHeaders.TOKEN;
 
-import org.folio.edge.erm.config.ErmClientConfig;
-import java.net.URI;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.service.annotation.HttpExchange;
+import tools.jackson.databind.JsonNode;
 
-@FeignClient(name = "erm", configuration = ErmClientConfig.class)
+@HttpExchange(contentType = "application/json")
 public interface ErmClient {
 
-  @GetMapping(value = "/erm/sas/publicLookup", consumes = MediaType.APPLICATION_JSON_VALUE)
-  String getLicenseTerms(URI uri,
-      @RequestParam String referenceId, 
+  @GetExchange("erm/sas/publicLookup")
+  JsonNode getLicenseTerms(@RequestParam("referenceId") String referenceId,
       @RequestHeader(TENANT) String tenant,
       @RequestHeader(TOKEN) String token);
 

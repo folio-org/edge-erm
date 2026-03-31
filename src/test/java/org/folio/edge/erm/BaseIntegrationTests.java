@@ -1,52 +1,50 @@
 package org.folio.edge.erm;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static org.folio.edge.erm.TestConstants.TEST_TENANT;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
-import org.folio.edge.erm.service.ErmService;
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
 import java.util.List;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
-import org.folio.edgecommonspring.client.EdgeFeignClientProperties;
-import org.folio.edgecommonspring.client.EnrichUrlClient;
+import org.folio.edgecommonspring.client.EdgeClientProperties;
 import org.folio.spring.integration.XOkapiHeaders;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.actuate.observability.AutoConfigureObservability;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.contract.wiremock.WireMockSpring;
 import org.springframework.http.HttpHeaders;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 
 @Log4j2
 @SpringBootTest
-@TestPropertySource("classpath:application-test.yml")
 @AutoConfigureMockMvc
-@AutoConfigureObservability
+@ActiveProfiles("test")
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public abstract class BaseIntegrationTests {
   protected static final WireMockServer WIRE_MOCK = new WireMockServer(
-      WireMockSpring.options()
+      options()
           .dynamicPort()
-          .extensions(new ResponseTemplateTransformer(false)));
+          .templatingEnabled(true)
+          .globalTemplating(false));
   private static final String TEST_API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
 
+  @Autowired
+  protected MockMvc mockMvc;
+
   @BeforeAll
-  static void beforeAll(@Autowired EnrichUrlClient enrichUrlClient, @Autowired ErmService ermService,
-      @Autowired EdgeFeignClientProperties properties) {
+  static void beforeAll(@Autowired EdgeClientProperties edgeClientProperties) {
     WIRE_MOCK.start();
-    var url = WIRE_MOCK.baseUrl();
-    ReflectionTestUtils.setField(enrichUrlClient, "okapiUrl", url);
-    ReflectionTestUtils.setField(ermService, "okapiUrl", url);
-    ReflectionTestUtils.setField(properties, "okapiUrl", url);
+    ReflectionTestUtils.setField(edgeClientProperties, TestConstants.OKAPI_URL_FIELD, WIRE_MOCK.baseUrl());
+    log.info("Wire mock started");
   }
 
   @AfterAll

@@ -11,4 +11,5 @@ public class TestConstants {
   public static final String LICENSE_TERMS_RESPONSE_2_PATH = "__files/responses/license-terms_2.json";
   public static final String LICENSE_TERMS_BATCH_REQUEST_PATH = "__files/request/license-terms-batch.json";
   public static final String NOT_FOUND_RESPONSE_PATH = "__files/responses/license-terms-empty.json";
+  public static final String OKAPI_URL_FIELD = "okapiUrl";
 }

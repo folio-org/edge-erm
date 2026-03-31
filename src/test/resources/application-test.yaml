@@ -1,0 +1,15 @@
+secure_store_props: src/test/resources/ephemeral.properties
+spring:
+  application:
+    name: edge-courses
+  tenant:
+    validation:
+      enabled: false
+
+thread-pool-executor:
+  config:
+    core-pool-size: 2
+    max-pool-size: 2
+    queue-capacity: 100
+    keep-alive-seconds: 1
+

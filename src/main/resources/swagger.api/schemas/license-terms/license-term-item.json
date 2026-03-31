@@ -3,43 +3,39 @@
   "type": "object",
   "properties": {
     "id": {
+      "description": "License term id",
       "type": "number"
     },
     "name": {
+      "description": "License term name",
       "type": "string"
     },
     "label": {
+      "description": "License term label",
       "type": "string"
     },
     "description": {
+      "description": "License term description",
       "type": "string"
     },
     "visibility": {
+      "description": "License term visibility",
       "type": "string"
     },
     "primary": {
+      "description": "Indicates if this license term is primary",
       "type": "boolean"
     },
     "value": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "object"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        }
-      ]
+      "description": "Free-form JSON value (can be string, object, array, etc).",
+      "x-java-type": "java.lang.Object"
     },
     "weight": {
+      "description": "License term weight for sorting",
       "type": "number"
     },
     "publicNote": {
+      "description": "Public note for this license term",
       "type": "string"
     }
   },
