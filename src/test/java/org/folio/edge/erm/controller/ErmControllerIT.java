@@ -11,13 +11,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.folio.edge.erm.BaseIntegrationTests;
 import org.folio.edge.erm.TestUtil;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.web.servlet.MockMvc;
 
 class ErmControllerIT extends BaseIntegrationTests {
-
-  @Autowired
-  private MockMvc mockMvc;
 
   @Test
   void getLicenseTerms_shouldReturnLicenseTerms() throws Exception {

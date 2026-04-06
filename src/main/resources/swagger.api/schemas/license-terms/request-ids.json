@@ -1,7 +1,9 @@
 {
   "type": "object",
+  "description": "Request body for batch license term request",
   "properties": {
     "ids": {
+      "description": "List of request ids",
       "type": "array",
       "items":{
         "type": "string"
