@@ -1,3 +1,8 @@
+## 1.5.0
+
+- [EDGERM-16](https://folio-org.atlassian.net/browse/EDGERM-16): Upgrade module to SpringBoot 4.0 and Spring 7.0
+- [EDGERM-19](https://folio-org.atlassian.net/browse/EDGERM-19): Use GitHub Workflows for Maven
+
 ## 1.4.0
 
 - [EDGERM-10](https://folio-org.atlassian.net/browse/EDGERM-10): Upgrading to java 21

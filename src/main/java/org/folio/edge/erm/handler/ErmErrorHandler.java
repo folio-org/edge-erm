@@ -1,11 +1,9 @@
 package org.folio.edge.erm.handler;
 
 import org.folio.erm.domain.dto.Error;
-import feign.FeignException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
