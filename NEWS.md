@@ -1,3 +1,7 @@
+## 1.5.1
+
+- [EDGERM-24](https://folio-org.atlassian.net/browse/EDGERM-24): Upgrade edge-common-spring in edge-erm
+
 ## 1.5.0
 
 - [EDGERM-16](https://folio-org.atlassian.net/browse/EDGERM-16): Upgrade module to SpringBoot 4.0 and Spring 7.0
