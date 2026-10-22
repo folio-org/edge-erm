@@ -1,5 +1,6 @@
 ## WIP
 
+- [EDGERM-26](https://folio-org.atlassian.net/browse/EDGERM-26): Add DeployConfig.json to edge-erm (ADR-0013 Configuration Management)
 - [FOLIO-4553](https://folio-org.atlassian.net/browse/FOLIO-4553): Set "permissions: contents: read" in maven.yml
 
 ## 1.5.0
