@@ -28,7 +28,7 @@ public class ErmController implements ErmApi {
   }
 
   @Override
-  public ResponseEntity<LicenseTerms> getLicenseTerms(String id, String tenant, String token) {
+  public ResponseEntity<LicenseTerms> getLicenseTerms(String id, String apiKey, String authorization, String tenant, String token) {
     log.info("Retrieving license terms by id {}", id);
     return ResponseEntity.ok(ermService.getLicenseTerms(id, tenant, token));
   }

@@ -1,7 +1,9 @@
 openapi: 3.0.0
 info:
-  title: Erm API
+  title: Edge API - ERM -
   version: v1
+  description: |
+    [GitHub repository](https://github.com/folio-org/edge-erm)
 
 servers:
   - url: /erm/
@@ -16,6 +18,8 @@ paths:
       description: Retrieve license terms by package/title identifier
       parameters:
         - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/apiKey'
+        - $ref: '#/components/parameters/authorization'
         - $ref: '#/components/parameters/x-okapi-tenant-header'
         - $ref: '#/components/parameters/x-okapi-token-header'
       responses:
@@ -42,7 +46,7 @@ paths:
         - batchLicenseTerms
       operationId: batchLicenseTerms
       summary: Retrieve license terms by package/title identifier in batch
-      description: Retrieve license terms by package/title identifier in batch
+      description: Retrieve license terms for the package/title identifiers provided in the JSON request body.
       parameters:
         - $ref: '#/components/parameters/x-okapi-tenant-header'
         - $ref: '#/components/parameters/x-okapi-token-header'
@@ -137,8 +141,20 @@ components:
     id:
       name: id
       in: path
-      description: The UUID of a FOLIO user
+      description: |
+        Identifier in one of the following formats:
+        - Package: `{providerId}-{packageId}`.
+        Used to retrieve license terms for the package.
+        - Package and title: `{providerId}-{packageId}-{titleId}`.
+        Used to retrieve license terms for a specific title within the package.
       required: true
+      examples:
+        package:
+          summary: Package id
+          value: 583-4345
+        packageTitle:
+          summary: Package and title id
+          value: 583-4345-123456
       schema:
         type: string
     request-query-parameters:
