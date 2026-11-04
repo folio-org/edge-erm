@@ -5,13 +5,13 @@ import org.folio.erm.domain.dto.LicenseTerms;
 import org.folio.erm.domain.dto.LicenseTermsBatch;
 import org.folio.erm.domain.dto.RequestIds;
 import org.folio.erm.rest.resource.ErmApi;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "Edge erm")
+@Tag(name = "Edge erm")
 @Log4j2
 @RestController
 @RequiredArgsConstructor
