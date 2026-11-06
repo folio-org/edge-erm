@@ -1,5 +1,6 @@
 ## WIP
 
+- [EDGERM-29](https://folio-org.atlassian.net/browse/EDGERM-29): Upgrade module to Spring Boot 4.1.1
 - [EDGERM-13](https://folio-org.atlassian.net/browse/EDGERM-13): Update edge-erm API documentation
 - [EDGERM-26](https://folio-org.atlassian.net/browse/EDGERM-26): Add DeployConfig.json to edge-erm (ADR-0013 Configuration Management)
 - [FOLIO-4553](https://folio-org.atlassian.net/browse/FOLIO-4553): Set "permissions: contents: read" in maven.yml
