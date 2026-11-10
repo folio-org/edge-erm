@@ -1,3 +1,7 @@
+## 1.5.2
+
+- [EDGERM-29](https://folio-org.atlassian.net/browse/EDGERM-29): Upgrade module to Spring Boot 4.1.1
+
 ## 1.5.1
 
 - [EDGERM-24](https://folio-org.atlassian.net/browse/EDGERM-24): Upgrade edge-common-spring in edge-erm
