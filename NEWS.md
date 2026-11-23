@@ -1,3 +1,7 @@
+## 1.5.3
+
+- [EDGERM-26](https://folio-org.atlassian.net/browse/EDGERM-26): Add DeployConfig.json to edge-erm (ADR-0013 Configuration Management)
+
 ## 1.5.2
 
 - [EDGERM-29](https://folio-org.atlassian.net/browse/EDGERM-29): Upgrade module to Spring Boot 4.1.1
